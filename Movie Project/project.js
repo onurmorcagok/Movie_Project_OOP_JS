@@ -9,6 +9,10 @@ const urlElement = document.querySelector("#url");
 
 const ui = new UI();
 
+// Stroage Object created
+
+const storage = new Storage();
+
 // All events loaded
 
 eventListeners();
@@ -26,7 +30,7 @@ function addMovie(e) {
 
     if (title === "" || director === "" || url === "") {
 
-        ui.displayMessages("Lütfen tüm alanları doldurunuz." , "danger");
+        ui.displayMessages("Lütfen tüm alanları doldurunuz.", "danger");
 
     } else {
 
@@ -35,7 +39,9 @@ function addMovie(e) {
 
         ui.addMovieToUI(newMovie); // UI Movie added
 
-        ui.displayMessages("Film başarıyla eklendi." , "success");
+        storage.addMovieToStorage(newMovie); // Movie added to Storage
+
+        ui.displayMessages("Film başarıyla eklendi.", "success");
 
     }
 
