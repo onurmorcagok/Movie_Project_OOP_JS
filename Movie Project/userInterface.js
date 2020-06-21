@@ -18,16 +18,33 @@ UI.prototype.addMovieToUI = function (newMovie) {
 
     movieList.innerHTML +=
 
-        `
+    `
     <tr>
     <td><img src="${newMovie.url}" class="img-fluid img-thumbnail"></td>
     <td>${newMovie.title}</td>
     <td>${newMovie.director}</td>
     <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
     </tr>
-
     `
 
+}
+
+UI.prototype.loadAllMovies = function (movies) {
+
+    const movieList = document.getElementById("films");
+
+    movies.forEach(function (movie) {
+
+        movieList.innerHTML += 
+        `
+        <tr>
+        <td><img src="${movie.url}" class="img-fluid img-thumbnail"></td>
+        <td>${movie.title}</td>
+        <td>${movie.director}</td>
+        <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
+        </tr>
+        `;
+    })
 }
 
 UI.prototype.clearInputs = function (element1, element2, element3) {
@@ -37,7 +54,7 @@ UI.prototype.clearInputs = function (element1, element2, element3) {
     element3.value = "";
 }
 
-UI.prototype.displayMessages = function(message,type){
+UI.prototype.displayMessages = function (message, type) {
 
     const cardBody = document.querySelector(".card-body");
 
@@ -50,7 +67,7 @@ UI.prototype.displayMessages = function(message,type){
 
     cardBody.appendChild(alert);
 
-    setTimeout(function() {
+    setTimeout(function () {
         alert.remove();
-    },1000);
+    }, 1000);
 }
