@@ -27,7 +27,7 @@ function eventListeners() {
         ui.loadAllMovies(movies);
     });
 
-    cardBody.addEventListener("click",deleteMovie);
+    cardBody.addEventListener("click", deleteMovie);
 }
 
 function addMovie(e) {
@@ -59,8 +59,11 @@ function addMovie(e) {
 }
 
 function deleteMovie(e) {
-   
-    if (e.target.id  === "delete-film"){
+
+    if (e.target.id === "delete-film") {
         ui.deleteMovieFromUI(e.target);
+        storage.deleteMovieFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
+
+        ui.displayMessages("Film başarıyla kaldırıldı.", "success");
     }
 }
