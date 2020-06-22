@@ -18,7 +18,7 @@ UI.prototype.addMovieToUI = function (newMovie) {
 
     movieList.innerHTML +=
 
-    `
+        `
     <tr>
     <td><img src="${newMovie.url}" class="img-fluid img-thumbnail"></td>
     <td>${newMovie.title}</td>
@@ -35,8 +35,8 @@ UI.prototype.loadAllMovies = function (movies) {
 
     movies.forEach(function (movie) {
 
-        movieList.innerHTML += 
-        `
+        movieList.innerHTML +=
+            `
         <tr>
         <td><img src="${movie.url}" class="img-fluid img-thumbnail"></td>
         <td>${movie.title}</td>
@@ -45,6 +45,11 @@ UI.prototype.loadAllMovies = function (movies) {
         </tr>
         `;
     })
+}
+
+UI.prototype.deleteMovieFromUI = function (element) {
+
+    element.parentElement.parentElement.remove();
 }
 
 UI.prototype.clearInputs = function (element1, element2, element3) {
