@@ -5,6 +5,7 @@ const titleElement = document.querySelector("#title");
 const directorElement = document.querySelector("#director");
 const urlElement = document.querySelector("#url");
 const cardBody = document.querySelectorAll(".card-body")[1];
+const clear = document.getElementById("clear-films");
 
 // UI Object Started
 
@@ -28,6 +29,7 @@ function eventListeners() {
     });
 
     cardBody.addEventListener("click", deleteMovie);
+    clear.addEventListener("click",clearAllMovie);
 }
 
 function addMovie(e) {
@@ -66,4 +68,10 @@ function deleteMovie(e) {
 
         ui.displayMessages("Film başarıyla kaldırıldı.", "success");
     }
+}
+
+function clearAllMovie() {
+
+    ui.clearAllMoviesFromUI();
+    storage.clearAllMoviesFromStorage();
 }

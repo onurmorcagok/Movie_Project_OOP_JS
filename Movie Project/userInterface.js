@@ -52,6 +52,18 @@ UI.prototype.deleteMovieFromUI = function (element) {
     element.parentElement.parentElement.remove();
 }
 
+UI.prototype.clearAllMoviesFromUI = function () {
+
+    const movieList = document.getElementById("films");
+
+    if (confirm("Tüm filmleri silmek istediğinize emin misiniz ?")) {
+
+        while (movieList.firstElementChild != null) {
+            movieList.removeChild(movieList.firstElementChild);
+        }
+    }
+}
+
 UI.prototype.clearInputs = function (element1, element2, element3) {
 
     element1.value = "";
