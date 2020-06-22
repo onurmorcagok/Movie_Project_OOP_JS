@@ -1,24 +1,22 @@
-function UI() {
+class UI {
 
 
-}
+    static addMovieToUI(newMovie) {
 
-UI.prototype.addMovieToUI = function (newMovie) {
+        /*
+             <tr>
+             <td><img src="" class="img-fluid img-thumbnail"></td>
+             <td></td>
+             <td></td>
+             <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
+            </tr> 
+        */
 
-    /*
-         <tr>
-         <td><img src="" class="img-fluid img-thumbnail"></td>
-         <td></td>
-         <td></td>
-         <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
-        </tr> 
-    */
+        const movieList = document.getElementById("films");
 
-    const movieList = document.getElementById("films");
+        movieList.innerHTML +=
 
-    movieList.innerHTML +=
-
-        `
+            `
     <tr>
     <td><img src="${newMovie.url}" class="img-fluid img-thumbnail"></td>
     <td>${newMovie.title}</td>
@@ -27,16 +25,16 @@ UI.prototype.addMovieToUI = function (newMovie) {
     </tr>
     `
 
-}
+    }
 
-UI.prototype.loadAllMovies = function (movies) {
+    static loadAllMovies(movies) {
 
-    const movieList = document.getElementById("films");
+        const movieList = document.getElementById("films");
 
-    movies.forEach(function (movie) {
+        movies.forEach(function (movie) {
 
-        movieList.innerHTML +=
-            `
+            movieList.innerHTML +=
+                `
         <tr>
         <td><img src="${movie.url}" class="img-fluid img-thumbnail"></td>
         <td>${movie.title}</td>
@@ -44,47 +42,49 @@ UI.prototype.loadAllMovies = function (movies) {
         <td><a href="#" id = "delete-film" class = "btn btn-danger">Filmi Sil</a></td>
         </tr>
         `;
-    })
-}
+        })
+    }
 
-UI.prototype.deleteMovieFromUI = function (element) {
+    static deleteMovieFromUI(element) {
 
-    element.parentElement.parentElement.remove();
-}
+        element.parentElement.parentElement.remove();
+    }
 
-UI.prototype.clearAllMoviesFromUI = function () {
+    static clearAllMoviesFromUI() {
 
-    const movieList = document.getElementById("films");
+        const movieList = document.getElementById("films");
 
-    if (confirm("Tüm filmleri silmek istediğinize emin misiniz ?")) {
+        if (confirm("Tüm filmleri silmek istediğinize emin misiniz ?")) {
 
-        while (movieList.firstElementChild != null) {
-            movieList.removeChild(movieList.firstElementChild);
+            while (movieList.firstElementChild != null) {
+                movieList.removeChild(movieList.firstElementChild);
+            }
         }
     }
-}
 
-UI.prototype.clearInputs = function (element1, element2, element3) {
+    static clearInputs(element1, element2, element3) {
 
-    element1.value = "";
-    element2.value = "";
-    element3.value = "";
-}
+        element1.value = "";
+        element2.value = "";
+        element3.value = "";
+    }
 
-UI.prototype.displayMessages = function (message, type) {
+    static displayMessages(message, type) {
 
-    const cardBody = document.querySelector(".card-body");
+        const cardBody = document.querySelector(".card-body");
 
-    // Alert div created
+        // Alert div created
 
-    const alert = document.createElement("div");
+        const alert = document.createElement("div");
 
-    alert.className = `alert alert-${type}`;
-    alert.textContent = message;
+        alert.className = `alert alert-${type}`;
+        alert.textContent = message;
 
-    cardBody.appendChild(alert);
+        cardBody.appendChild(alert);
 
-    setTimeout(function () {
-        alert.remove();
-    }, 1000);
+        setTimeout(function () {
+            alert.remove();
+        }, 1000);
+    }
+
 }

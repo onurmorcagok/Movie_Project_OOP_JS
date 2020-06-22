@@ -7,14 +7,6 @@ const urlElement = document.querySelector("#url");
 const cardBody = document.querySelectorAll(".card-body")[1];
 const clear = document.getElementById("clear-films");
 
-// UI Object Started
-
-const ui = new UI();
-
-// Stroage Object created
-
-const storage = new Storage();
-
 // All events loaded
 
 eventListeners();
@@ -24,8 +16,8 @@ function eventListeners() {
     form.addEventListener("submit", addMovie);
     document.addEventListener("DOMContentLoaded", function () {
 
-        let movies = storage.getMoviesFromStorage();
-        ui.loadAllMovies(movies);
+        let movies = Storage.getMoviesFromStorage();
+        UI.loadAllMovies(movies);
     });
 
     cardBody.addEventListener("click", deleteMovie);
@@ -40,22 +32,22 @@ function addMovie(e) {
 
     if (title === "" || director === "" || url === "") {
 
-        ui.displayMessages("Lütfen tüm alanları doldurunuz.", "danger");
+        UI.displayMessages("Lütfen tüm alanları doldurunuz.", "danger");
 
     } else {
 
         // New Movie
         const newMovie = new Movie(title, director, url);
 
-        ui.addMovieToUI(newMovie); // UI Movie added
+        UI.addMovieToUI(newMovie); // UI Movie added
 
-        storage.addMovieToStorage(newMovie); // Movie added to Storage
+        Storage.addMovieToStorage(newMovie); // Movie added to Storage
 
-        ui.displayMessages("Film başarıyla eklendi.", "success");
+        UI.displayMessages("Film başarıyla eklendi.", "success");
 
     }
 
-    ui.clearInputs(titleElement, directorElement, urlElement);
+    UI.clearInputs(titleElement, directorElement, urlElement);
 
     e.preventDefault();
 }
@@ -63,15 +55,15 @@ function addMovie(e) {
 function deleteMovie(e) {
 
     if (e.target.id === "delete-film") {
-        ui.deleteMovieFromUI(e.target);
-        storage.deleteMovieFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
+        UI.deleteMovieFromUI(e.target);
+        Storage.deleteMovieFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
 
-        ui.displayMessages("Film başarıyla kaldırıldı.", "success");
+        UI.displayMessages("Film başarıyla kaldırıldı.", "success");
     }
 }
 
 function clearAllMovie() {
 
-    ui.clearAllMoviesFromUI();
-    storage.clearAllMoviesFromStorage();
+    UI.clearAllMoviesFromUI();
+    Storage.clearAllMoviesFromStorage();
 }

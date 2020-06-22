@@ -1,8 +1,9 @@
-// Movie Constructor
+class Movie {
 
-function Movie (title,director,url) {
+    constructor(title, director, url) {
 
-    this.title = title;
-    this.director = director;
-    this.url = url;
+        this.title = title;
+        this.director = director;
+        this.url = url;
+    }
 }
